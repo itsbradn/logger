@@ -1,6 +1,10 @@
 {
   "name": "@itsbradn/logger",
   "description": "Stylized node console logger",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itsbradn/logger.git"
+  },
   "packageManager": "yarn@4.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

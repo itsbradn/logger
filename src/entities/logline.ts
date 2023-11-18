@@ -6,6 +6,7 @@ export type Services =
     | "HTTP"
     | "DB"
     | "INFO"
+    | "WARN"
     | "ERROR";
 
 export interface Line {
@@ -83,6 +84,7 @@ export class LogLine {
         if (service == 'DB') return chalk.yellow('DB');
         if (service == 'HTTP') return chalk.cyanBright('HTTP');
         if (service == 'ERROR') return chalk.redBright('ERROR');
+        if (service == 'WARN') return chalk.hex('FFAD00')('WARN');
         return chalk.blueBright('INFO');
     }
 }

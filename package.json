@@ -1,0 +1,23 @@
+{
+  "name": "@itsbradn/logger",
+  "description": "Stylized node console logger",
+  "packageManager": "yarn@4.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "version": "0.0.2",
+  "files": [
+    "/dist"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node .",
+    "publish": "npm publish --access=public"
+  },
+  "dependencies": {
+    "chalk": "4.1.2"
+  }
+}

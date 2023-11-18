@@ -19,7 +19,7 @@ export class Logger {
         let x = 0;
         const printLines: LogLine[] = [];
         for (let i = 1; (x < rows && i < rows); i++) {
-            const line = lines[lines.length - i]; //TODO: fix this pls
+            const line = lines[lines.length - i];
             if (!line) continue;
             x += line.lines.length;
             printLines.unshift(line);

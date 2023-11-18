@@ -3,9 +3,10 @@ import { symbols } from "./symbols";
 import { Logger } from "./logger";
 
 export type Services =
-    "HTTP" |
-    "DB" | 'INFO';
-
+    | "HTTP"
+    | "DB"
+    | "INFO"
+    | "ERROR";
 
 export interface Line {
     service: Services;
@@ -81,6 +82,7 @@ export class LogLine {
     colorizeService(service: Services) {
         if (service == 'DB') return chalk.yellow('DB');
         if (service == 'HTTP') return chalk.cyanBright('HTTP');
+        if (service == 'ERROR') return chalk.redBright('ERROR');
         return chalk.blueBright('INFO');
     }
 }

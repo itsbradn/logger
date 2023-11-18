@@ -31,10 +31,91 @@ export class Logger {
         }
     }
 
-    log(line: Line) {
+    log(line: Line | any) {
+        if (typeof line == 'object') {
+            if (line.hasOwnProperty('content')) {
+                const newLine = new LogLine(this);
+                this.lines.push(newLine);
+                newLine.addLine(line);
+                return newLine;
+            }
+
+            const newLine = new LogLine(this);
+            this.lines.push(newLine);
+            newLine.addLine({
+                service: 'INFO',
+                content: JSON.stringify(line)
+            });
+            return newLine;
+        }
+
+        if (typeof line == 'string') {
+            const newLine = new LogLine(this);
+            this.lines.push(newLine);
+            newLine.addLine({
+                service: 'INFO',
+                content: line
+            });
+            return newLine;
+        }
+
+        if (typeof line == 'number' || typeof line == 'bigint') {
+            const newLine = new LogLine(this);
+            this.lines.push(newLine);
+            newLine.addLine({
+                service: 'INFO',
+                content: line.toString()
+            });
+            return newLine;
+        }
+
+        if (typeof line == 'boolean') {
+            const newLine = new LogLine(this);
+            this.lines.push(newLine);
+            newLine.addLine({
+                service: 'INFO',
+                content: line ? 'true' : 'false'
+            });
+            return newLine;
+        }
+
+        if (typeof line == 'undefined') {
+            const newLine = new LogLine(this);
+            this.lines.push(newLine);
+            newLine.addLine({
+                service: 'INFO',
+                content: 'undefined'
+            });
+            return newLine;
+        }
+
+        if (typeof line == 'function') {
+            const newLine = new LogLine(this);
+            this.lines.push(newLine);
+            newLine.addLine({
+                service: 'INFO',
+                content: line.toString(),
+            });
+            return newLine;
+        }
+
+        if (typeof line == 'symbol') {
+            const newLine = new LogLine(this);
+            this.lines.push(newLine);
+            newLine.addLine({
+                service: 'INFO',
+                content: line.toString(),
+            });
+            return newLine;
+        }
+
+
         const newLine = new LogLine(this);
         this.lines.push(newLine);
-        newLine.addLine(line);
+        newLine.addLine({
+            service: 'ERROR',
+            content: 'Invalid value passed to logger.'
+        });
         return newLine;
     }
 }
